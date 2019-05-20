@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>starRTC技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="starRTC技术博客">
+<meta name="keywords" content="starRTC技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="starRTC技术博客">
+<meta property="og:url" content="http://blog.starrtc.com/page/3/index.html">
+<meta property="og:site_name" content="starRTC技术博客">
+<meta property="og:description" content="starRTC技术博客">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="starRTC技术博客">
+<meta name="twitter:description" content="starRTC技术博客">
+  
+    <link rel="alternate" href="/atom.xml" title="starRTC技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">starRTC技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+		<a class="main-nav-link" href="https://www.starRTC.com">Home</a>
+		<a class="main-nav-link" href="https://docs.starRTC.com">Docs</a>
+		<a class="main-nav-link" href="https://github.com/starrtc/android-demo/issues">Forum</a>
+		<a class="main-nav-link" href="https://docs.starrtc.com/en/download/">Download</a>
+		<a class="main-nav-link" href="https://docs.starrtc.com/en/contact/">Contact</a>
+		
+        
+          <a class="main-nav-link" href="/">Blog</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+		<!-- 
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+		-->
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.starrtc.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-starrtc-androidthings-rpi-prerequisite" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/11/starrtc-androidthings-rpi-prerequisite/" class="article-date">
+  <time datetime="2018-07-11T09:55:51.000Z" itemprop="datePublished">2018-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/11/starrtc-androidthings-rpi-prerequisite/">StarRTC,AndroidThings,树莓派小车,公网环境,视频遥控(一)准备工作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>啥也不说，先来个视频看看效果</p>
+<video src="/assets/iot_car.mp4" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"><br>your browser does not support the video tag</video>
+
+<center>视频地址：<a href="https://www.bilibili.com/video/av25265178/" target="_blank" rel="noopener">https://www.bilibili.com/video/av25265178/</a></center>
+
+<p><strong>概述</strong><br>为了体现StarRTC的实时音视频传输能力，我们做了这个视频遥控小车。<br>小车使用了StarRTC能力中的的IM通讯、互动直播（连麦）、实时数据传输（类教学白板）这三项能力。<br>大致流程是：<br>1 手机端通过IM通讯获取对小车的控制权（IM能力）；<br>2 小车创建一个互动直播间，并通知手机端进行连麦（互动直播能力）；<br>3 手机端连麦并向小车发送实时指令，控制小车的行动（实时数据流传输能力）；<br>帖子最后会贴出小车demo的项目源码，供大家交流使用。</p>
+<p><strong>1 需要准备哪些？</strong><br>硬件：树莓派3B,树莓派摄像头，摄像头云台，直流电机驱动板，4驱小车套装；<br>系统：AndroidThings 1.0；<br>软件：StarRTC SDK；</p>
+<p><strong>2 开始造车</strong><br>2.1 首先将树莓派3B刷成AndroidThings系统<br>刷机教程：<a href="https://blog.csdn.net/fu_shuwu/article/details/75737359" target="_blank" rel="noopener">https://blog.csdn.net/fu_shuwu/article/details/75737359</a><br>2.2 组装小车<br>组装小车底盘和车轮》固定树莓派》安装电机驱动板》安装摄像头云台》接线</p>
+<p>云台舵机接线<br><img src="/assets/297843509918763789.jpg" alt="云台舵机接线"><br>云台由两个舵机控制方向，每个舵机有三根线，棕色接地，橙色接电（这里我接了树莓派3.3v，因为5v的被风扇占了），黄色接PWM信号。<br>控制上下的舵机接线方式：<br>棕色&gt;第9引脚、橙色&gt;第1引脚、黄色&gt;第12引脚；<br>控制左右的舵机接线方式：<br>棕色&gt;第25引脚、橙色&gt;第17引脚、黄色&gt;第33引脚；</p>
+<p>附上一张树莓派3b的引脚说明图,这张图拯救了我，因为从这张图里看到了PWM的引脚。<br><img class="alignnone size-medium wp-image-89" src="/assets/raspberrypi_pinout-176x300.png" alt="" width="352" height="600"></p>
+<p>驱动电机接线<br><img src="/assets/25276792513020578.jpg" alt="驱动电机接线"><br>电机接线需要参照您购买的驱动板说明，接线应该都很容易。</p>
+<p>安装完成<br><img src="/assets/158723229296627950.jpg" alt="安装完成"></p>
+<p>下一篇介绍如何借助StarRTC，开发一个视频遥控小车~</p>
+<p><strong>同行的认可是远行最大的动力，欢迎转载本博客文章，转载请注明出处，十分感谢。</strong></p>
+<p><a href="http://blog.starrtc.com/2018/07/11/starrtc-androidthings-rpi-prerequisite/" target="_blank" rel="noopener">StarRTC，AndroidThings，树莓派小车，公网环境，视频遥控(一)准备工作</a><br><a href="http://blog.starrtc.com/2018/08/10/starrtc-androidthings-rpi-car-side/" target="_blank" rel="noopener">StarRTC，AndroidThings，树莓派小车，公网环境，视频遥控(二)小车端</a><br><a href="http://blog.starrtc.com/2018/09/09/starrtc-androidthings-rpi-phone-side/" target="_blank" rel="noopener">StarRTC，AndroidThings，树莓派小车，公网环境，视频遥控(三)手机端</a><br><a href="https://github.com/starrtc/iot_car_demo" target="_blank" rel="noopener">源码下载地址：https://github.com/starrtc/iot_car_demo</a></p>
+<audio style="display: none;" controls="controls"></audio>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.starrtc.com/2018/07/11/starrtc-androidthings-rpi-prerequisite/" data-id="cjqev61n900006dmdxvoirkhd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/09/starrtc-androidthings-rpi-phone-side/">StarRTC,AndroidThings,树莓派小车,公网环境,视频遥控(三)手机端</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/10/starrtc-androidthings-rpi-car-side/">StarRTC,AndroidThings,树莓派小车,公网环境,视频遥控(二)小车端</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/11/starrtc-androidthings-rpi-prerequisite/">StarRTC,AndroidThings,树莓派小车,公网环境,视频遥控(一)准备工作</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/starrtc-demo-car/">使用starRTC做的测试样车</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2010-2019 starRTC.com<br>
+	  <!--
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  -->
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Blog</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
